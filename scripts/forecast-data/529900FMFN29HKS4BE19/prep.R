@@ -4,7 +4,9 @@ rm(list = ls())
 library(dplyr)
 library(tidyr)
 
-root_path <- "scripts/forecast-data/529900FMFN29HKS4BE19/"
+lei <- "529900FMFN29HKS4BE19"
+
+root_path <- paste0("scripts/forecast-data/", lei, "/")
 
 # Get list of files in the folder
 list_files <- list.files(paste0(root_path, "raw/"))
@@ -29,5 +31,5 @@ for (i in 1:nlist) {
 }
 
 write.csv(result,
-          file = "scripts/forecast-data/529900FMFN29HKS4BE19/forecasts.csv",
+          file = paste0(root_path, "forecasts.csv"),
           row.names = FALSE)
