@@ -10,7 +10,7 @@ LEI: 549300DTUYXVMJXZNY75
 
 ## Workflow
 
-Since the ECB provides its data in a machine-readable format, it can be downloaded directly from its website and, thus, the workflow only consists in running the script `prep.R`. However, file `imf_ecb.csv` might require infrequent maintenance in case the codes change core countries become part of the monetary union.
+Since the ECB provides its data in a machine-readable format, it can be downloaded directly from its website and, thus, the workflow only consists in running the script `prep.R`. However, file `imf_ecb.csv` might require infrequent maintenance in case the country codes change or countries become part of the monetary union.
 
 ## Source
 
