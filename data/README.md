@@ -32,7 +32,7 @@ The data provided in this project is collected on a best-effort basis and absolu
 
 ## Contribute
 
-See XYZ
+See the [documentation on contributing](https://github.com/franzmohr/macroprojections/tree/master/scripts).
 
 
 

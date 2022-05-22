@@ -18,5 +18,5 @@ The data provided in this project is collected on a best-effort basis and no war
 
 ## Contribute
 
-See XZY.
+See the [documentation on contributing](https://github.com/franzmohr/macroprojections/tree/master/scripts).
 

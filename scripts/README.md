@@ -23,3 +23,5 @@ We welcome contributions for all of our processes. This includes:
 * Refining existing code to automate processes.
 * Make general suggestions.
 
+If you have any questions or suggestions, feel free to contact me via email or LinkedIn.
+
