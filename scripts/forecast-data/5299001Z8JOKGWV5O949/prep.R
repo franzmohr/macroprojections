@@ -21,10 +21,11 @@ for (i in 1:nlist) {
   
   date_i <- as.Date(substring(file_i, 1, 8), "%Y%m%d")
   
-  temp_i <- readxl::read_excel(path_i) %>%
+  temp_i <- read.csv(path_i) %>%
     pivot_longer(cols = -c("variable"), names_to = "year", values_to = "value") %>%
-    mutate(pubdate = date_i,
-           ctry = 122L)
+    mutate(year = substring(year, 2, 5),
+           pubdate = date_i,
+           ctry = "122")
   
   result <- bind_rows(result, temp_i)
   rm(temp_i)
