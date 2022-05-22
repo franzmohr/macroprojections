@@ -12,9 +12,9 @@ Economic projections are an indispensable source of information for public insti
 ## Content
 
 * `year`: Reference year of the forecast.
-* `ctry`: ID of the country. The ID follows the IMF, which also has IDs for regions. This is not possible with traditional ISO 3166-1 alpha-2 or alpha-3 codes.
+* `ctry`: ID of the country. The ID follows the IMF's convention, which also has IDs for regions. This is not possible with traditional ISO 3166-1 alpha-2 or alpha-3 codes.
 * `pubdate`: Date of the publication of the forecast in the format `YYYY-MM-DD`.
-* `variable`: Varible code of the variable based on the conventions used in the IMF's World Economic Outlook database.
+* `variable`: Variable code of the economic series. The code follows the conventions used in the IMF's World Economic Outlook database.
 * `institution`: LEI of the forecast provider.
 * `value`: Value of the forecast.
 
