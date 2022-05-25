@@ -1,3 +1,16 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
 # Data on macroeconomic projections
 
 Download the complete data set
@@ -8,6 +21,7 @@ Download the complete data set
 ## Purpose
 
 Economic projections are an indispensable source of information for public institutions such as ministries, central banks and supervisory authorities. However, forecast providers usually publish forecasts only on their own websites and not all publish them in a machine-readable format. The purpose of this repository of macroeconomic forecasts is to address those caveats by providing a platform, where macroeconomic projections are collected and can be downloaded in a machine-readable format. By that, this project intends to contribute to a more intensive use of economic forecasts by policy makers and to foster research on the forecasting power of different approaches.
+
 
 ## Content
 
@@ -33,7 +47,6 @@ The data provided in this project is collected on a best-effort basis and absolu
 ## Contribute
 
 See the [documentation on contributing](https://github.com/franzmohr/macroprojections/tree/master/scripts).
-
 
 
 
