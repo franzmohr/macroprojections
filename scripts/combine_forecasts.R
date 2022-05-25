@@ -52,16 +52,23 @@ meta <- result %>%
   group_by(institution, variable) %>%
   filter(pubdate == max(pubdate))
 
+# Names of institutions
+
+institutions <- read.csv("scripts/support-data/institutions.csv")
+
 # Save data ----
 
 # xlsx
 wb <- createWorkbook()
 addWorksheet(wb, "data")
 addWorksheet(wb, "meta")
+addWorksheet(wb, "institution")
 writeData(wb, "data", result)
 writeData(wb, "meta", meta)
+writeData(wb, "institutions", institutions)
 saveWorkbook(wb, file = "data/forecasts.xlsx", overwrite = TRUE)
 
 # csv
 write.csv(result, file = "data/forecasts.csv", row.names = FALSE)
-write.csv(result, file = "data/meta.csv", row.names = FALSE)
+write.csv(meta, file = "data/meta.csv", row.names = FALSE)
+write.csv(institutions, file = "data/institutions.csv", row.names = FALSE)
