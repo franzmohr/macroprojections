@@ -51,7 +51,7 @@ See the [documentation on contributing](https://github.com/franzmohr/macroprojec
 
 ## Example
 
-```{r, warning=FALSE, message=FALSE, fig.height=4, fig.width=5}
+```{r, warning=FALSE, message=FALSE, fig.height=5, fig.width=6}
 # Load packages
 library(dplyr)
 library(eurostat)
