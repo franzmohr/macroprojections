@@ -56,19 +56,26 @@ meta <- result %>%
 
 institutions <- read.csv("scripts/support-data/institutions.csv")
 
+# Country codes
+
+countries <- read.csv("scripts/support-data/geo_list.csv")
+
 # Save data ----
 
 # xlsx
 wb <- createWorkbook()
 addWorksheet(wb, "data")
 addWorksheet(wb, "meta")
-addWorksheet(wb, "institution")
+addWorksheet(wb, "geo")
+addWorksheet(wb, "institutions")
 writeData(wb, "data", result)
 writeData(wb, "meta", meta)
+writeData(wb, "geo", countries)
 writeData(wb, "institutions", institutions)
 saveWorkbook(wb, file = "data/forecasts.xlsx", overwrite = TRUE)
 
 # csv
 write.csv(result, file = "data/forecasts.csv", row.names = FALSE)
 write.csv(meta, file = "data/meta.csv", row.names = FALSE)
+write.csv(countries, file = "data/geo.csv", row.names = FALSE)
 write.csv(institutions, file = "data/institutions.csv", row.names = FALSE)
