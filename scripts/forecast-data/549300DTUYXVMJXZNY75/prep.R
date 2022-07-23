@@ -40,5 +40,5 @@ result <- result %>%
   filter(!is.na(ctry))
 
 write.csv(result,
-         file = paste0(root_path, "forecasts.csv"),
-         row.names = FALSE)
+          file = paste0(root_path, "forecasts.csv"),
+          row.names = FALSE)
