@@ -33,7 +33,7 @@ result <- data %>%
          value = obsvalue) %>%
   select(year, ref_area, variable, pubdate, value)
 
-geo_list <- read_csv("scripts/forecast-data/549300DTUYXVMJXZNY75/imf_ecb.csv")
+geo_list <- readr::read_csv("scripts/forecast-data/549300DTUYXVMJXZNY75/imf_ecb.csv")
 
 result <- result %>%
   left_join(geo_list, by = c("ref_area" = "ecb")) %>%
@@ -41,5 +41,5 @@ result <- result %>%
   filter(!is.na(ctry))
 
 write.csv(result,
-         file = paste0(root_path, "forecasts.csv"),
-         row.names = FALSE)
+          file = paste0(root_path, "forecasts.csv"),
+          row.names = FALSE)
