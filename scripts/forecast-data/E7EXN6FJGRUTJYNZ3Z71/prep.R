@@ -15,7 +15,10 @@ list_files <- list_files[which(grepl(".xml", tolower(list_files)))]
 
 nlist <- length(list_files)
 result <- NULL
+pb <- txtProgressBar(style = 3)
 for (i in 1:nlist) {
+  
+  setTxtProgressBar(pb, i / nlist)
   
   file_i <- list_files[i]
   
