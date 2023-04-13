@@ -1,6 +1,14 @@
 
 rm(list = ls())
 
+# Imports and prepares data from the IMF World Economic Outlook database
+
+# Notes for future work:
+# - The update is very slow. Think about revising the code to achieve a faster import.
+# - Produce feedback files with errors that are stored in the institution's folder
+# - Put loop into an lapply function for parallelisation
+
+
 library(dplyr)
 library(rsdmx)
 library(tidyr)
