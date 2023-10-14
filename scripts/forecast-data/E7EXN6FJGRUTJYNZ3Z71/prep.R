@@ -6,7 +6,6 @@ rm(list = ls())
 # Notes for future work:
 # - The update is very slow. Think about revising the code to achieve a faster import.
 # - Produce feedback files with errors that are stored in the institution's folder
-# - Put loop into an lapply function for parallelisation
 
 
 library(dplyr)
@@ -23,12 +22,9 @@ list_files <- list_files[which(grepl(".xml", tolower(list_files)))]
 
 nlist <- length(list_files)
 result <- NULL
-pb <- txtProgressBar(style = 3)
-for (i in 1:nlist) {
-  
-  setTxtProgressBar(pb, i / nlist)
-  
-  file_i <- list_files[i]
+
+# Define function, which read individual xml files
+read_imf_pred <- function(file_i, root_path) {
   
   path_i <- paste0(root_path, "raw/", file_i)
   
@@ -51,12 +47,16 @@ for (i in 1:nlist) {
            pubdate = date_i,
            ctry = as.integer(ctry))
   
-  result[[i]] <- temp_i
-  rm(temp_i)
+  return(temp_i)
 }
 
+# Read xml files in parallel
+result <- parallel::mclapply(list_files, read_imf_pred, root_path = root_path, mc.cores = 3)
+
+# Combine data
 result <- bind_rows(result)
 
+# Write institution-specific csv file
 write.csv(result,
           file = paste0(root_path, "forecasts.csv"),
           row.names = FALSE)
