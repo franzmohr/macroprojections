@@ -27,7 +27,7 @@ result <- data %>%
                              pubmonth == "G" ~ "-06-01",
                              pubmonth == "S" ~ "-09-01",
                              pubmonth == "W" ~ "-03-01"),
-         # Gernate publication date variable
+         # Generate publication date variable
          pubdate = paste0(pubyear, pubdate)) %>%
   rename(year = obstime,
          value = obsvalue) %>%
