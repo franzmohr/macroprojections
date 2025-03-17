@@ -51,7 +51,7 @@ read_imf_pred <- function(file_i, root_path) {
 }
 
 # Read xml files in parallel
-result <- parallel::mclapply(list_files, read_imf_pred, root_path = root_path, mc.cores = 3)
+result <- parallel::mclapply(list_files, read_imf_pred, root_path = root_path)
 
 # Combine data
 result <- bind_rows(result)
