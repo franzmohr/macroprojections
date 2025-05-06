@@ -16,13 +16,6 @@ lei <- "E7EXN6FJGRUTJYNZ3Z71"
 
 root_path <- paste0("scripts/forecast-data/", lei, "/")
 
-# Get list of files in the folder
-list_files <- list.files(paste0(root_path, "raw/"))
-list_files <- list_files[which(grepl(".xml", tolower(list_files)))]
-
-nlist <- length(list_files)
-result <- NULL
-
 # Define function, which read individual xml files
 read_imf_pred <- function(file_i, root_path) {
   
@@ -50,13 +43,47 @@ read_imf_pred <- function(file_i, root_path) {
   return(temp_i)
 }
 
-# Read xml files in parallel
-result <- parallel::mclapply(list_files, read_imf_pred, root_path = root_path)
 
-# Combine data
-result <- bind_rows(result)
+# Get list of files in the folder
+list_files <- list.files(paste0(root_path, "raw/"))
+list_files <- list_files[which(grepl(".xml", tolower(list_files)))]
+dates_already_imported <- as.character(as.Date(substring(list_files, 1, 8), "%Y%m%d"))
 
-# Write institution-specific csv file
-write.csv(result,
-          file = paste0(root_path, "forecasts.csv"),
-          row.names = FALSE)
+# If the forecast.csv file already exists only new raw data will be read
+is_update <- file.exists(paste0(root_path, "/forecasts.csv"))
+if (is_update) {
+  avail_dates <- read.csv(paste0(root_path, "/forecasts.csv")) %>%
+    pull("pubdate") %>%
+    unique()
+  
+  pos <- which(!dates_already_imported %in% avail_dates)
+  
+  # Update the list of files that should actually be read
+  list_files <- list_files[pos]
+}
+
+
+
+
+if (length(list_files) > 0) {
+  
+  # Read xml files in parallel
+  result <- parallel::mclapply(list_files, read_imf_pred, root_path = root_path)
+  
+  result <- bind_rows(result)
+  
+  # Combine data
+  if (is_update) {
+    old_data <- read.csv(paste0(root_path, "/forecasts.csv")) %>%
+      mutate(year = as.character(year),
+             pubdate = as.Date(pubdate))
+    result <- bind_rows(old_data, result)
+  }
+  
+  
+  # Write institution-specific csv file
+  write.csv(result,
+            file = paste0(root_path, "forecasts.csv"),
+            row.names = FALSE)
+  
+}
