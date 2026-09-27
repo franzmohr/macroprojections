@@ -44,6 +44,7 @@ forecasting power of different approaches.
     identifier (LEI) are included in the data set. The LEI is used as
     the main identifier of forecast providers.
 -   Currently, only annual forecasts are considered.
+-   Only series with an equivalent in the IMF's World Economic Outlook database are included, so that every provider's forecasts are comparable with the IMF's. The variables currently covered are real GDP growth (`NGDP_RPCH`), inflation (`PCPIPCH`), the unemployment rate (`LUR`), the volume of exports and imports of goods and services (`TX_RPCH`, `TM_RPCH`), the current account balance (`BCA_NGDPD`), and general government net lending and gross debt (`GGXCNL_NGDP`, `GGXWDG_NGDP`), the last four as % of GDP.
 -   The goal of this repository is global coverage, which is
     automatically achieved by including the IMF’s forecasts for the
     World Economic Outlook. However, forecasts by local institutions
