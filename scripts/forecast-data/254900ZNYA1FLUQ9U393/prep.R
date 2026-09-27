@@ -38,10 +38,12 @@ ctry_list <- read.csv("scripts/support-data/geo_list.csv")
 
 result <- result %>%
   # Rename some countries to allow for correct mapping with IMF codes
-  mutate(geo = case_when(geo == "Czechia" ~ "Czech Republic",
+  # The EC labels the aggregates by their composition in newer releases
+  # ("EA 20", "EU 27"); without these the rows are dropped by the join below
+  mutate(geo = case_when(geo %in% c("Czechia", "CzechRepublic") ~ "Czech Republic",
                          geo == "Slovakia" ~ "Slovak Republic",
-                         geo == "EA" ~ "Euro area",
-                         geo == "EU" ~ "European Union",
+                         grepl("^EA ?[0-9]*$", geo) ~ "Euro area",
+                         grepl("^EU ?[0-9]*$", geo) ~ "European Union",
                          TRUE ~ geo)) %>%
   left_join(ctry_list, by = c("geo" = "ctry_name")) %>%
   select(year, ctry, variable, pubdate, value) %>%
