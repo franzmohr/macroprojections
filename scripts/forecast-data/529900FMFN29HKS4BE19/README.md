@@ -7,6 +7,7 @@ LEI: 529900FMFN29HKS4BE19
 * `prep.R`: The script used to produce the `forecasts.csv` file from the files stored in folder `raw`. Further documentation can be found there.
 * `raw`: Folder containing raw files, which are combined using script `prep.R`. See below for details on the update.
 * `forecasts.csv`: Standardised file for the institution's entire sample of projections.
+* `sources.csv`: Page, table and row of every value collected using AI, with the definition used. These vintages are also listed in `scripts/support-data/ai_collected.csv`.
 
 ## Workflow
 

@@ -46,11 +46,20 @@ result <- bind_rows(result)
 
 # Meta data ----
 
+# One row per forecast vintage (institution, variable, publication date).
+# ai_collected is TRUE for the vintages whose numbers were collected using AI,
+# as registered in scripts/support-data/ai_collected.csv.
+
+ai_collected <- read.csv("scripts/support-data/ai_collected.csv", colClasses = "character") %>%
+  select(institution, pubdate) %>%
+  mutate(ai_collected = TRUE)
+
 meta <- result %>%
   select(institution, variable, pubdate) %>%
   distinct() %>%
-  group_by(institution, variable) %>%
-  filter(pubdate == max(pubdate))
+  left_join(ai_collected, by = c("institution", "pubdate")) %>%
+  mutate(ai_collected = !is.na(ai_collected)) %>%
+  arrange(institution, variable, pubdate)
 
 # Names of institutions
 
