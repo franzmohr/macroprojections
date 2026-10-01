@@ -49,7 +49,7 @@ forecasting power of different approaches.
     automatically achieved by including the IMF’s forecasts for the
     World Economic Outlook. However, forecasts by local institutions
     should also be gradually included to complement the IMF’s data.
--   The coverage of the data is documented in the meta file.
+-   The coverage of the data is documented in the meta file `meta.csv`, which has one row per forecast vintage: `institution`, `variable`, `pubdate` and `ai_collected`. `ai_collected` is `TRUE` if the numbers of the vintage were collected using AI (an AI assistant downloaded, read or transcribed them from the source) and `FALSE` if they were collected by a person or by the institution's download script. The AI-collected vintages are registered in [`scripts/support-data/ai_collected.csv`](https://github.com/franzmohr/macroprojections/tree/master/scripts/support-data/ai_collected.csv).
 
 ## Disclaimer
 

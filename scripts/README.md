@@ -13,6 +13,7 @@ Here you will find all the different scripts and tools that we use to generate t
 
 * Raw data is stored in the folder of the respective forecast publisher.
 * The script `prep` is executed to update the csv file in the folder of the respective forecast provider.
+* If the numbers of a forecast vintage were collected using AI, the vintage (institution LEI and publication date) is added to `support-data/ai_collected.csv`. `combine_forecasts` uses this list to set the column `ai_collected` in the meta file.
 * Script `combine_forecasts` is executed to combine all institution-specific forecasts useing only the forecasts.csv files of the institution-specific folders.
 
 ## Contribute
