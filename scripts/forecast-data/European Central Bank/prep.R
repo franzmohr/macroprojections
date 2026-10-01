@@ -7,9 +7,9 @@ library(readr)
 library(readxl)
 library(tidyr)
 
-lei <- "549300DTUYXVMJXZNY75"
+institution <- "European Central Bank"
 
-root_path <- paste0("scripts/forecast-data/", lei, "/")
+root_path <- paste0("scripts/forecast-data/", institution, "/")
 
 # Download data from ECB homepage
 # Only projection items with an IMF WEO equivalent are kept. The national
@@ -41,7 +41,7 @@ result <- data %>%
          value = obsvalue) %>%
   select(year, ref_area, variable, pubdate, value)
 
-geo_list <- readr::read_csv("scripts/forecast-data/549300DTUYXVMJXZNY75/imf_ecb.csv")
+geo_list <- readr::read_csv("scripts/forecast-data/European Central Bank/imf_ecb.csv")
 
 result <- result %>%
   left_join(geo_list, by = c("ref_area" = "ecb")) %>%

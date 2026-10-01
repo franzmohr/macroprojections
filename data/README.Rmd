@@ -29,13 +29,13 @@ Economic projections are an indispensable source of information for public insti
 * `ctry`: ID of the country. The ID follows the IMF's convention, which also has IDs for regions. This is not possible with traditional ISO 3166-1 alpha-2 or alpha-3 codes.
 * `pubdate`: Date of the publication of the forecast in the format `YYYY-MM-DD`.
 * `variable`: Variable code of the economic series. The code follows the conventions used in the IMF's World Economic Outlook database.
-* `institution`: LEI of the forecast provider.
+* `institution`: Official name of the forecast provider. The list of institutions, with their legal entity identifier (LEI) where they have one, is in `institutions.csv`.
 * `value`: Value of the forecast.
 
 ## Coverage
 
 * Only forecasts of non-commercial institutions are included in the data set. Therefore, all the information in the data set is publicly available at the time of collection of the data. This is ensured by requiring a working link to the original source of the forecast.
-* Only forecasts of institutions that have a valid legal entity identifier (LEI) are included in the data set. The LEI is used as the main identifier of forecast providers.
+* Forecast providers are identified by their official name.
 * Currently, only annual forecasts are considered.
 * Only series with an equivalent in the IMF's World Economic Outlook database are included, so that every provider's forecasts are comparable with the IMF's. The variables currently covered are real GDP growth (`NGDP_RPCH`), inflation (`PCPIPCH`), the unemployment rate (`LUR`), the volume of exports and imports of goods and services (`TX_RPCH`, `TM_RPCH`), the current account balance (`BCA_NGDPD`), and general government net lending and gross debt (`GGXCNL_NGDP`, `GGXWDG_NGDP`), the last four as % of GDP.
 * The goal of this repository is global coverage, which is automatically achieved by including the IMF's forecasts for the World Economic Outlook. However, forecasts by local institutions should also be gradually included to complement the IMF's data.
@@ -71,9 +71,6 @@ actual <- get_eurostat(id = "nama_10_gdp",
          value = values) %>%
   select(year, value)
 
-# Institutions
-inst <- read.csv("https://github.com/franzmohr/macroprojections/raw/master/data/institutions.csv")
-
 # Forecasts
 fcst <- read.csv("https://github.com/franzmohr/macroprojections/raw/master/data/forecasts.csv") %>%
   filter(ctry == "122", # Austria
@@ -84,10 +81,8 @@ fcst <- read.csv("https://github.com/franzmohr/macroprojections/raw/master/data/
   # Prepare dates
   mutate(year = as.Date(paste0(year, "-01-01")),
          pubmonth = substring(pubdate, 1, 7)) %>%
-  # Merge with institution meta data
-  left_join(inst, by = "institution") %>%
   # Add publication information to institution name
-  mutate(institution = paste0(institution_name, " (", pubmonth, ")")) %>%
+  mutate(institution = paste0(institution, " (", pubmonth, ")")) %>%
   select(year, institution, value)
 
 # Final list of institutions

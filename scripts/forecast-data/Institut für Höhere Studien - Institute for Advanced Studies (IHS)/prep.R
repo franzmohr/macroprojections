@@ -4,9 +4,9 @@ rm(list = ls())
 library(dplyr)
 library(tidyr)
 
-lei <- "5299001Z8JOKGWV5O949"
+institution <- "Institut für Höhere Studien - Institute for Advanced Studies (IHS)"
 
-root_path <- paste0("scripts/forecast-data/", lei, "/")
+root_path <- paste0("scripts/forecast-data/", institution, "/")
 
 # Get list of files in the folder
 list_files <- list.files(paste0(root_path, "raw/"))

@@ -12,9 +12,9 @@ library(dplyr)
 library(rsdmx)
 library(tidyr)
 
-lei <- "E7EXN6FJGRUTJYNZ3Z71"
+institution <- "International Monetary Fund"
 
-root_path <- paste0("scripts/forecast-data/", lei, "/")
+root_path <- paste0("scripts/forecast-data/", institution, "/")
 
 # Define function, which reads individual xml files
 read_imf_pred <- function(file_i, root_path) {

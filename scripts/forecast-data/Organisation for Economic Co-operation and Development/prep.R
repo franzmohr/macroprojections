@@ -4,9 +4,9 @@ rm(list = ls())
 library(dplyr)
 library(tidyr)
 
-lei <- "969500Y2NFIMDP5MO798"
+institution <- "Organisation for Economic Co-operation and Development"
 
-root_path <- paste0("scripts/forecast-data/", lei, "/")
+root_path <- paste0("scripts/forecast-data/", institution, "/")
 
 # One file per Economic Outlook edition (or interim release) and variable,
 # "YYYYMMDD_<VARIABLE>.csv", with a column "Category" of country names as in
