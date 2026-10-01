@@ -29,7 +29,7 @@ Economic projections are an indispensable source of information for public insti
 * `ctry`: ID of the country. The ID follows the IMF's convention, which also has IDs for regions. This is not possible with traditional ISO 3166-1 alpha-2 or alpha-3 codes.
 * `pubdate`: Date of the publication of the forecast in the format `YYYY-MM-DD`.
 * `variable`: Variable code of the economic series. The code follows the conventions used in the IMF's World Economic Outlook database.
-* `institution`: Official name of the forecast provider. The list of institutions, with their legal entity identifier (LEI) where they have one, is in `institutions.csv`.
+* `institution`: Official name of the forecast provider. The list of institutions, with their short name and their legal entity identifier (LEI) where they have one, is in `institutions.csv`.
 * `value`: Value of the forecast.
 
 ## Coverage

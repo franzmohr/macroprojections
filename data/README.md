@@ -31,7 +31,7 @@ forecasting power of different approaches.
     `YYYY-MM-DD`.
 -   `variable`: Variable code of the economic series. The code follows
     the conventions used in the IMF’s World Economic Outlook database.
--   `institution`: Official name of the forecast provider. The list of institutions, with their legal entity identifier (LEI) where they have one, is in `institutions.csv`.
+-   `institution`: Official name of the forecast provider. The list of institutions, with their short name and their legal entity identifier (LEI) where they have one, is in `institutions.csv`.
 -   `value`: Value of the forecast.
 
 ## Coverage
