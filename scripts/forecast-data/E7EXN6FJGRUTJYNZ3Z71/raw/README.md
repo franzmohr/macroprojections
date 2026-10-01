@@ -1,5 +1,7 @@
 # IMF WEO vintages after October 2024 (LEI E7EXN6FJGRUTJYNZ3Z71)
 
+> **Note (merge of 2026-10-01):** `forecasts.csv` is now updated incrementally (see `prep.R`), and the raw XML files are no longer kept in the repository, `20250422_weo.xml` included. The April 2025 and October 2025 vintages in `forecasts.csv` come from the maintainer's own import, so `20251014_weo.csv` is not read (its publication date is already in `forecasts.csv`). Only `20260414_weo.csv` is added from the files described below.
+
 Retrieved 2026-09-27. No values were typed in, interpolated or imputed.
 
 ## Vintages found
